@@ -68,6 +68,7 @@
       <origin xyz="${baselen*reflect/3} 0 -${wheeldiam/2+.05}" rpy="0 0 0"/>
     </joint>
 
+
   </xacro:macro>
 
   <xacro:macro name="leg" params="prefix reflect">
@@ -256,6 +257,16 @@
     <child link="lens"/>
     <axis xyz="0 0 1"/>
     <origin xyz="${.707*width+0.04} 0 ${.707*width}"/>
+  </joint>
+
+  <link name="base_footprint">
+  </link>
+
+  <joint name="from_bf" type="fixed">
+    <parent link="base_link"/>
+    <child link="base_footprint"/>
+    <axis xyz="0 0 1"/>
+      <origin xyz="0 0 -${0.1+wheeldiam+bodylen/2}" rpy="0 0 0"/>
   </joint>
 
 </robot>
