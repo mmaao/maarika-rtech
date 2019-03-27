@@ -263,8 +263,8 @@
   </link>
 
   <joint name="from_bf" type="fixed">
-    <parent link="base_link"/>
-    <child link="base_footprint"/>
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
     <axis xyz="0 0 1"/>
       <origin xyz="0 0 -${0.1+wheeldiam+bodylen/2}" rpy="0 0 0"/>
   </joint>
