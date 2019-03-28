@@ -239,7 +239,7 @@
   <link name="lens">
     <visual>
       <geometry>
-        <cylinder radius="0.03" length="${0.005}"/>
+        <cylinder radius="0.03" length="0.005"/>
       </geometry>
       <material name="black"/>
 	<origin rpy="0 1.57075 0" xyz="0 0 0"/>
@@ -266,7 +266,15 @@
     <parent link="base_footprint"/>
     <child link="base_link"/>
     <axis xyz="0 0 1"/>
-      <origin xyz="0 0 -${0.1+wheeldiam+bodylen/2}" rpy="0 0 0"/>
+      <origin xyz="0 0 ${0.1+wheeldiam+bodylen/2}" rpy="0 0 0"/>
   </joint>
 
+  <link name="eye">
+  </link>
+
+  <joint name="toeye" type="continuous">
+    <parent link="lens"/>
+    <child link="eye"/>
+    <origin xyz="0 0 0" rpy="${pi} 0 0"/>
+  </joint>
 </robot>
