@@ -1,5 +1,5 @@
 <launch>
 <node name="rviz" pkg="rviz" type="rviz" args="-d $(find range_visualizer)/config/range.rviz"/>
 <node name="range_pub" pkg="range_visualizer" type="publ"/>
-<node pkg="tf" type="static_transform_publisher" name="link1_broadcaster" args="1 0 0 0 0 0 1 base bla 100" />
+<node pkg="tf" type="static_transform_publisher" name="link1_broadcaster" args="0 0 0 0 0 0 base bla 100" />
 </launch>

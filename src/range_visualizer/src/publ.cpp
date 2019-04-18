@@ -1,16 +1,14 @@
 #include "ros/ros.h"
-#include "std_msgs/String.h"
 #include "sensor_msgs/Range.h"
 
 #include <sstream>
 
 int main(int argc, char **argv)
 {
-  ros::init(argc, argv, "range_pub");
+  ros::init(argc, argv, "publ");
   ros::NodeHandle n;
   ros::Publisher range_pub = n.advertise<sensor_msgs::Range>("range", 1000);
   ros::Rate loop_rate(10);
-  int count = 0;
   while (ros::ok())
   {
     sensor_msgs::Range msg;
@@ -24,7 +22,6 @@ int main(int argc, char **argv)
     range_pub.publish(msg);
 
     loop_rate.sleep();
-    ++count;
   }
 
 
