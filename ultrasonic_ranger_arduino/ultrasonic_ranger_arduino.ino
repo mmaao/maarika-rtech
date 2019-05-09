@@ -27,4 +27,3 @@ void loop()
   Serial.println(us);
   delay(20);
 }
-

@@ -1,16 +1,18 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(range_visualizer)
+project(planning_tutorial)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
+add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
+  moveit_ros_planning_interface
+  moveit_visual_tools
   roscpp
   rospy
-  sensor_msgs
+  rviz_visual_tools
   std_msgs
 )
 
@@ -69,10 +71,10 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
- generate_messages(
-   DEPENDENCIES
-   sensor_msgs#   std_msgs
- )
+# generate_messages(
+#   DEPENDENCIES
+#   std_msgs
+# )
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -105,8 +107,8 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES range_visualizer
-#  CATKIN_DEPENDS roscpp rospy sensor_msgs std_msgs
+#  LIBRARIES planning_tutorial
+#  CATKIN_DEPENDS moveit_ros_planning_interface moveit_visual_tools roscpp rospy rviz_visual_tools std_msgs
 #  DEPENDS system_lib
 )
 
@@ -123,7 +125,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/range_visualizer.cpp
+#   src/${PROJECT_NAME}/planning_tutorial.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -134,7 +136,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/range_visualizer_node.cpp)
+# add_executable(${PROJECT_NAME}_node src/planning_tutorial_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -191,7 +193,7 @@ include_directories(
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_range_visualizer.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_planning_tutorial.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
@@ -199,9 +201,5 @@ include_directories(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
-add_executable(publ src/publ.cpp)
-target_link_libraries(publ ${catkin_LIBRARIES})
-add_dependencies(publ range_visualizer_generate_messages_cpp)
-add_executable(receive src/receive.cpp)
-target_link_libraries(receive ${catkin_LIBRARIES})
-add_dependencies(receive range_visualizer_generate_messages_cpp)
+add_executable(planning_tutorial src/planning_tutorial.cpp)
+target_link_libraries(planning_tutorial ${catkin_LIBRARIES})
