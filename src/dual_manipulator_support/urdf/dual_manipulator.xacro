@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+
+<!--Generates a urdf from the macro in sia5_macro.xacro -->
+
+<robot name="dual_manipulator" xmlns:xacro="http://ros.org/wiki/xacro">
+	<xacro:include filename="$(find dual_manipulator_support)/urdf/dual_manipulator_macro.xacro"/>
+	<xacro:dual_manipulator prefix=""/>
+</robot>
+
