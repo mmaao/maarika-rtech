@@ -1,7 +1,9 @@
 <?xml version="1.0" ?>
-<robot xmlns:xacro="http://ros.org/wiki/xacro" name="dual_manipulator">
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="dual_manipulator2">
 	
 	<xacro:include filename="$(find motoman_sia5d_support)/urdf/sia5d_macro.xacro"/> 
+	<xacro:include filename="$(find ur_description)/urdf/ur5.urdf.xacro"/>
+	
 	
   <link name="base_link">
     <visual>
@@ -12,7 +14,7 @@
         <color rgba="0 0 .8 1"/>
       </material>
     </visual>
-        <collison>
+    <collison>
     <geometry>
         <box size="0.6 1.6 0.1"/>
       </geometry>
@@ -26,7 +28,7 @@
         <origin xyz="0 -0.5 0.05" />
     </joint>  
     
-    <xacro:motoman_sia5d prefix="right_"/>
+    <xacro:ur5_robot prefix="right_" joint_limited="false"/>
     <joint name="right_robot" type="fixed">
         <parent link="base_link"/>
         <child link="right_base_link"/>
@@ -35,4 +37,3 @@
  
   
 </robot>
-
